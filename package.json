@@ -1,0 +1,29 @@
+{
+  "name": "portal",
+  "group": "microportal",
+  "version": "1.0.0",
+  "description": "Base portal from microfrontends with ReactJS",
+  "scripts": {
+    "start": "webpack-dev-server --port 9000",
+    "build": "webpack -p --progress && docker build -t $npm_package_group/$npm_package_name:$npm_package_version ."
+  },
+  "author": "Rafael Ramos",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "single-spa": "^4.0.1",
+    "zone.js": "^0.8.26"
+  }
+}
