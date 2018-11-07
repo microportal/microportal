@@ -1,0 +1,20 @@
+language: node_js
+sudo: required
+node_js:
+  - "11"
+
+services:
+  - docker
+
+script:
+  - npm i
+  - npm run build
+
+before_deploy:
+  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+deploy:
+  provider: script
+  script: docker push microportal/portal
+  on:
+    branch: master
