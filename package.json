@@ -5,7 +5,7 @@
   "description": "Base portal from microfrontends with ReactJS",
   "scripts": {
     "start": "webpack-dev-server --port 9000",
-    "build": "webpack -p --progress && docker build -t $npm_package_group/$npm_package_name:$npm_package_version ."
+    "build": "webpack -p --progress && docker build -t $npm_package_group/$npm_package_name:$npm_package_version . --no-cache --pull"
   },
   "author": "Rafael Ramos",
   "license": "MIT",

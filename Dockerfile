@@ -1,4 +1,4 @@
-FROM microportal/nginx-kong:1.0
+FROM microportal/nginx-kong:latest
 
 ENV SERVICE_NAME=portal \
     SERVICE_URL=http://portal:80/ \
