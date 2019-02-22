@@ -16,14 +16,14 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "copy-webpack-plugin": "^4.6.0",
-    "single-spa": "^4.0.1",
-    "zone.js": "^0.8.26"
+    "single-spa": "^4.1.1",
+    "zone.js": "^0.8.29"
   }
 }
