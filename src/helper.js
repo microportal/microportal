@@ -1,12 +1,21 @@
 import * as singleSpa from 'single-spa';
+import axios from 'axios';
 
-export function hashPrefix(prefix) {
+const config = {
+    url: 'http://localhost/auth/realms',
+    realm: 'MicroportalRealm',
+    clientId: 'microportal-login',
+    grant_type: 'password',
+};
+
+
+export const hashPrefix = prefix => {
     return function (location) {
         return location.hash.startsWith(`#${prefix}`);
     }
 }
 
-export async function loadApp(name, hash, appURL, storeURL, globalEventDistributor) {
+export const loadApp = async (name, hash, appURL, storeURL, globalEventDistributor) => {
     let storeModule = {}, customProps = {globalEventDistributor: globalEventDistributor};
 
     // try to import the store module
@@ -26,4 +35,19 @@ export async function loadApp(name, hash, appURL, storeURL, globalEventDistribut
 
     // register the main with singleSPA and pass a reference to the store of the main as well as a reference to the globalEventDistributor
     singleSpa.registerApplication(name, () => SystemJS.import(appURL), hashPrefix(hash), customProps);
+}
+
+export const validateToken = async () => {
+    const access_token = localStorage.getItem('microportal.access_token')
+
+    if (access_token) {
+        try {
+            const url ='/login-service/token'
+            const response = await axios.post(url, null, {headers: {'Authorization': `Bearer ${access_token}`}})
+            return response.status === 200
+        } catch (e) {
+            return false
+        }
+    }
+    return false
 }

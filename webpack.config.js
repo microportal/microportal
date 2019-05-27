@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require('path')
+const fs = require('fs')
 // const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
@@ -6,7 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: 'src/portal.js',
+        main: 'src/microportal.js',
     },
     output: {
         publicPath: '',
@@ -40,7 +41,6 @@ module.exports = {
     ],
     devtool: 'source-map',
     externals: [],
-    mode: 'development',
     devServer: {
         contentBase: './release',
         historyApiFallback: true,
@@ -50,31 +50,22 @@ module.exports = {
             "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
             "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
         },
-        // Proxy config
+        // Proxy config,
         proxy: {
-            "/portal-commons": {
+            "/login-ui": {
                 target: "http://localhost:9001",
-                pathRewrite: {"^/portal-commons": ""}
+                pathRewrite: {"^/login-ui": ""}
             },
-            "/app1": {
+            "/core-ui": {
                 target: "http://localhost:9002",
-                pathRewrite: {"^/app1": ""}
+                pathRewrite: {"^/core-ui": ""}
             },
-            "/app2": {
-                target: "http://localhost:9003",
-                pathRewrite: {"^/app2": ""}
-            },
-            "/portal-service": {
+            "/core-service": {
                 target: "http://localhost:9090",
-                pathRewrite: {"^/portal-service": ""}
+                pathRewrite: {"^/core-service": ""}
             },
-            "/app1-service": {
-                target: "http://localhost:9091",
-                pathRewrite: {"^/app1-service": ""}
-            },
-            "/app2-service": {
-                target: "http://localhost:9092",
-                pathRewrite: {"^/app2-service": ""}
+            "/login-service": {
+                target: "http://localhost:8080"
             }
         }
     }
