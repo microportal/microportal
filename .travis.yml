@@ -1,7 +1,7 @@
 language: node_js
 sudo: required
 node_js:
-  - "11"
+  - "12"
 
 services:
   - docker
@@ -15,6 +15,6 @@ before_deploy:
 
 deploy:
   provider: script
-  script: docker push microportal/portal
+  script: docker push microportal/microportal
   on:
     branch: master
