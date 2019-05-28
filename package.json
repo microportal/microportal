@@ -1,7 +1,7 @@
 {
   "name": "microportal",
   "group": "microportal",
-  "version": "1.0.0-SNAPSHOT",
+  "version": "1.0.0",
   "description": "Base microfrontends for microportal.",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --port 9000 --host 0.0.0.0",
