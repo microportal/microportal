@@ -1,9 +1,6 @@
 const path = require('path')
-const fs = require('fs')
-// const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-// const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -69,4 +66,4 @@ module.exports = {
             }
         }
     }
-};
+}
