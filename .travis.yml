@@ -7,8 +7,8 @@ services:
   - docker
 
 script:
-  - npm i
-  - npm run build
+  - yarn
+  - yarn build
 
 before_deploy:
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin

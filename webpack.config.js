@@ -1,6 +1,6 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -17,6 +17,9 @@ module.exports = {
                 test: /\.js?$/,
                 exclude: [path.resolve(__dirname, 'node_modules')],
                 loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
             }
         ],
     },
@@ -30,11 +33,11 @@ module.exports = {
         ],
     },
     plugins: [
-        CopyWebpackPlugin([
+        new CopyPlugin([
             {from: path.resolve(__dirname, 'src/index.html')},
             {from: path.resolve(__dirname, 'libs/system.js')}
         ]),
-        new CleanWebpackPlugin(['release'])
+        new CleanWebpackPlugin()
     ],
     devtool: 'source-map',
     externals: [],
