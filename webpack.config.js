@@ -18,13 +18,13 @@ module.exports = {
                 exclude: [path.resolve(__dirname, 'node_modules')],
                 loader: 'babel-loader',
                 options: {
-                    presets: ['@babel/preset-env']
-                }
-            }
+                    presets: ['@babel/preset-env'],
+                },
+            },
         ],
     },
     node: {
-        fs: 'empty'
+        fs: 'empty',
     },
     resolve: {
         modules: [
@@ -35,9 +35,9 @@ module.exports = {
     plugins: [
         new CopyPlugin([
             {from: path.resolve(__dirname, 'src/index.html')},
-            {from: path.resolve(__dirname, 'libs/system.js')}
+            {from: path.resolve(__dirname, 'libs/system.js')},
         ]),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
     ],
     devtool: 'source-map',
     externals: [],
@@ -46,27 +46,32 @@ module.exports = {
         historyApiFallback: true,
         watchOptions: {aggregateTimeout: 300, poll: 1000},
         headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+            'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
         },
         // Proxy config,
         proxy: {
-            "/login-ui": {
-                target: "http://localhost:9001",
-                pathRewrite: {"^/login-ui": ""}
+            '/login-ui': {
+                target: 'http://localhost:9001',
+                pathRewrite: {'^/login-ui': ''},
             },
-            "/core-ui": {
-                target: "http://localhost:9002",
-                pathRewrite: {"^/core-ui": ""}
+            '/core-ui': {
+                target: 'http://localhost:9002',
+                pathRewrite: {'^/core-ui': ''},
             },
-            "/core-service": {
-                target: "http://localhost:9090",
-                pathRewrite: {"^/core-service": ""}
+            '/auth': {
+                target: 'http://localhost:7000',
             },
-            "/login-service": {
-                target: "http://localhost:8080"
-            }
-        }
-    }
+            '/core-service': {
+                target: 'http://localhost:9090',
+            },
+            '/login-service': {
+                target: 'http://localhost:9091',
+            },
+            '/menu-service': {
+                target: 'http://localhost:9092',
+            },
+        },
+    },
 }
