@@ -11,9 +11,9 @@ const init = async () => {
     if (valid) {
         const {data} = await axios.get('/core-service/applications');
 
-        data.forEach(async (app) => {
-            await loadApp(app.name, app.path, app.indexUrl, app.storeUrl, globalEventDistributor);
-        });
+        for (const app of data) {
+            await loadApp(app.name, app.path, app.indexUrl, app.storeUrl, globalEventDistributor)
+        }
     } else {
         await loadApp('login-ui', '', '/login-ui/index.js', '/login-ui/store.js', globalEventDistributor)
     }

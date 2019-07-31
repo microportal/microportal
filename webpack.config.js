@@ -41,6 +41,7 @@ module.exports = {
     ],
     devtool: 'source-map',
     externals: [],
+    // Proxy config,
     devServer: {
         contentBase: './release',
         historyApiFallback: true,
@@ -50,7 +51,6 @@ module.exports = {
             'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
             'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
         },
-        // Proxy config,
         proxy: {
             '/login-ui': {
                 target: 'http://localhost:9001',
@@ -59,6 +59,10 @@ module.exports = {
             '/core-ui': {
                 target: 'http://localhost:9002',
                 pathRewrite: {'^/core-ui': ''},
+            },
+            '/menu-ui': {
+                target: 'http://localhost:9003',
+                pathRewrite: {'^/menu-ui': ''},
             },
             '/auth': {
                 target: 'http://localhost:7000',
